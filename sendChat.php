@@ -4,6 +4,8 @@
     $ch = curl_init();
     $url = 'https://api.openai.com/v1/chat/completions';
     
+    $api_key = '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'; // replace with your key
+    
     $data = [];
     $data["model"] = "gpt-3.5-turbo";
     $data['messages'] = array([
