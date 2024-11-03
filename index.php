@@ -125,7 +125,8 @@
                     botMessage.className = "message bot-message";
 
                     if(resultado.hasOwnProperty('response')){
-                        botMessage.textContent = resultado['response']['choices'][0]['message']['content'];
+                        console.log(resultado);
+                        botMessage.textContent = resultado;
                     }else if(resultado.hasOwnProperty('error')){
                         botMessage.textContent = resultado['error'];
                     }else if(resultado.hasOwnProperty('status')){

@@ -77,6 +77,6 @@ try{
     $respuestaChatbot = responderChatbot($preguntaUsuario);
     echo $respuestaChatbot;
 }catch(Exception $e){
-    echo  json_encode(['status' => $e->getMessage()]);
+    echo json_encode(['status' => $e->getMessage()]);
 }
 ?>
