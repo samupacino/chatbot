@@ -73,7 +73,7 @@ function responderChatbot($pregunta) {
 // Ejemplo de uso
 try{
 
-    $preguntaUsuario = $_POST['userInput'];
+    $preguntaUsuario = "que es el verbo";
     $respuestaChatbot = responderChatbot($preguntaUsuario);
     echo $respuestaChatbot;
 }catch(Exception $e){
