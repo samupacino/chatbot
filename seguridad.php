@@ -1,5 +1,5 @@
 <?php
-require_once('sendChat.php');
+//require_once('sendChat.php');
 
 function esTemaDeSeguridad($pregunta) {
     // Lista fusionada de palabras clave relacionadas con la seguridad laboral
