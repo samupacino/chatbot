@@ -112,7 +112,7 @@
             ajax_seguridad.addEventListener('readystatechange',function(evento){
             
                 if(evento.target.readyState != 4){
-                    console.log(evento.target.readyState);
+                    //console.log(evento.target.readyState);
                     return;
                 }
             
@@ -123,8 +123,9 @@
 
                     const botMessage = document.createElement("div");
                     botMessage.className = "message bot-message";
-
+              
                     if(resultado.hasOwnProperty('response')){
+             
                         botMessage.textContent = resultado['response']['choices'][0]['message']['content'];
                     }else if(resultado.hasOwnProperty('error')){
                         botMessage.textContent = resultado['error'];

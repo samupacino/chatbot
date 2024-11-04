@@ -1,5 +1,5 @@
 <?php
-//require_once('sendChat.php');
+require_once('sendChat.php');
 
 function esTemaDeSeguridad($pregunta) {
     // Lista fusionada de palabras clave relacionadas con la seguridad laboral
@@ -73,7 +73,7 @@ function responderChatbot($pregunta) {
 // Ejemplo de uso
 try{
 
-    $preguntaUsuario = "que es el la seguridad laboral";
+    $preguntaUsuario = $_POST['userInput'];
     $respuestaChatbot = responderChatbot($preguntaUsuario);
     echo $respuestaChatbot;
 }catch(Exception $e){
