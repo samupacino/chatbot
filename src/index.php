@@ -119,6 +119,8 @@
                 if(evento.target.status >= 200 && evento.target.status < 300){
                     
                     // Agregar la respuesta del chatbot a la interfaz
+                    /*console.log(evento.target.responseText);
+                    return;*/
                     var resultado = JSON.parse(evento.target.responseText);
 
                     const botMessage = document.createElement("div");
@@ -142,7 +144,7 @@
                     console.log(evento.target.responseText);
                 }
             });
-            ajax_seguridad.open("POST","seguridad.php");
+            ajax_seguridad.open("POST","main.php");
             ajax_seguridad.send(pregunta);
 
         });

@@ -1,10 +1,11 @@
 <?php
+class RespuestaApiChatGPT{
+
   function api_chatgpt($prompt){
 
     $ch = curl_init();
     $url = 'https://api.openai.com/v1/chat/completions';
-    
-
+    $api_key = "";
     $data = [];
     $data["model"] = "gpt-3.5-turbo";
     $data['messages'] = array([
@@ -21,8 +22,7 @@
       
     ];
 
-    
-    
+
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_POST, 1);
@@ -44,5 +44,5 @@
 
   }
 
-
+}
 ?>

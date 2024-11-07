@@ -1,9 +1,9 @@
 <?php
-require_once('sendChat.php');
 
-function esTemaDeSeguridad($pregunta) {
+class ValidadorPregunta {
+
     // Lista fusionada de palabras clave relacionadas con la seguridad laboral
-    $palabrasClave = [
+    protected $palabrasClave = [
         'seguridad', 'trabajo', 'protección personal', 'equipo de protección', 
         'accidentes', 'emergencia', 'incendio', 'evacuación', 
         'riesgos', 'salud ocupacional', 'ergonomía', 'procedimientos',
@@ -42,41 +42,19 @@ function esTemaDeSeguridad($pregunta) {
         'entorno seguro', 'equipamiento de seguridad', 'control de acceso',
         'protección frente a caídas', 'bloqueo y etiquetado', 'separadores de seguridad'
     ];
-
+    
+    function esTemaDeSeguridad($pregunta) {
     // Convierte la pregunta a minúsculas para una comparación más precisa
-    $pregunta = strtolower($pregunta);
+        $pregunta = strtolower($pregunta);
 
-    // Verifica si alguna palabra clave está en la pregunta
-    foreach ($palabrasClave as $palabra) {
-        if (strpos($pregunta, $palabra) !== false) {
-            return true; // Es una pregunta válida relacionada con seguridad
+        // Verifica si alguna palabra clave está en la pregunta
+        foreach ($this->palabrasClave as $palabra) {
+            if (strpos($pregunta, $palabra) !== false) {
+                return true; // Es una pregunta válida relacionada con seguridad
+            }
         }
+
+        return false; // No es una pregunta válida de seguridad en el trabajo
     }
-
-    return false; // No es una pregunta válida de seguridad en el trabajo
-}
-
-function responderChatbot($pregunta) {
-    // Verifica si la pregunta es sobre seguridad en el trabajo
-    if (esTemaDeSeguridad($pregunta)) {
-        // Respuesta si la pregunta es válida
-        return api_chatgpt($pregunta);
-    } else {
-        // Respuesta para preguntas fuera de tema
-        
-        $status = "Recuerda que este chatbot responde exclusivamente sobre temas de seguridad en el trabajo. Por favor, reformula tu pregunta para que esté relacionada con seguridad laboral.";
-        return json_encode(['status' => $status]);
-    }
-}
-
-
-// Ejemplo de uso
-try{
-
-    $preguntaUsuario = $_POST['userInput'];
-    $respuestaChatbot = responderChatbot($preguntaUsuario);
-    echo $respuestaChatbot;
-}catch(Exception $e){
-    echo json_encode(['status' => $e->getMessage()]);
 }
 ?>
