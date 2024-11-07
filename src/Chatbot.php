@@ -1,20 +1,23 @@
 <?php
 
-require_once('ValidadorPregunta.php');
-require_once('RespuestaApiChatGPT.php');
-
 class Chatbot{
 
+    protected $validador_pregunta;
+    protected $generador_respuesta;
 
+    public function __construct($validador, $generador)
+    {
+        $this->validador_pregunta = $validador;
+        $this->generador_respuesta = $generador;
+    }
+    
     function responderChatbot($pregunta) {
 
-        $validando = new ValidadorPregunta();
         
         // Verifica si la pregunta es sobre seguridad en el trabajo
-        if ($validando->esTemaDeSeguridad($pregunta)) {
+        if ($this->validador_pregunta->esTemaDeSeguridad($pregunta)) {
             // Respuesta si la pregunta es válida
-            $API = new RespuestaApiChatGPT(); 
-            return $API->api_chatgpt($pregunta);
+            return $this->generador_respuesta->api_chatgpt($pregunta);
         } else {
             // Respuesta para preguntas fuera de tema
             

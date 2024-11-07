@@ -120,7 +120,8 @@
                     
                     // Agregar la respuesta del chatbot a la interfaz
                     /*console.log(evento.target.responseText);
-                    return;*/
+                    return;
+                    */
                     var resultado = JSON.parse(evento.target.responseText);
 
                     const botMessage = document.createElement("div");
