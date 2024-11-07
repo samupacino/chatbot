@@ -43,7 +43,7 @@ class ValidadorPregunta {
         'protección frente a caídas', 'bloqueo y etiquetado', 'separadores de seguridad'
     ];
     
-    function esTemaDeSeguridad($pregunta) {
+    function ∑($pregunta) {
     // Convierte la pregunta a minúsculas para una comparación más precisa
         $pregunta = strtolower($pregunta);
 
