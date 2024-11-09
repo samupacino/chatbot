@@ -1,0 +1,159 @@
+/Applications/MAMP/bin/php/php8.2.20/bin/php
+          +-----------------+
+          |     Chatbot     |
+          +-----------------+
+          | - validador_pregunta: ValidadorPregunta  |
+          | - generador_respuesta: RespuestaGenerador |
+          +-----------------+
+          | + responderChatbot(pregunta: str): str |
+          +-----------------+
+                 /  \
+               usa   usa
+               /       \
++-------------------+    +---------------------+
+| ValidadorPregunta |    | RespuestaApiChatGPT |
++-------------------+    +---------------------+
+| - palabrasClave: list|   | + api_chatgpt(pregunta: str): str |
++-------------------+    +---------------------+
+| + esTemaDeSeguridad(pregunta: str): bool |
++-------------------+
+
+
+                    +---------------------+
+                    |   User Interface    |
+                    | (HTML/CSS/JS)       |
+                    +---------------------+
+                            |
+                            | Enviar pregunta (AJAX)
+                            v
+                    +---------------------+
+                    |       Chatbot       |
+                    |       (PHP)         |
+                    +---------------------+
+                            | 
+                            | Validar tema de pregunta
+                            v
+                    +---------------------+
+                    |      Validator      |
+                    |(ValidadorPregunta)  |
+                    +---------------------+
+                            |
+                            | Generar respuesta
+                            v
+                    +---------------------+
+                    |  Response Generator |
+                    |(RespuestaApiChatGPT) |
+                    +---------------------+
+                            |
+                            | Devolver respuesta
+                            v
+                    +---------------------+
+                    |   Usuario Interface    |
+                    +---------------------+
+
+                 +---------------------+
+                 |      Database       |
+                 |  (Opcional: logs)   |
+                 +---------------------+
+                            ^
+                            |
+                    Almacenar log (opcional)
+
+Descripción del Diagrama de Componentes
+User Interface (HTML/CSS/JS): Interfaz que el usuario utiliza para interactuar con el chatbot. Envía la pregunta del usuario al servidor usando AJAX y muestra la respuesta recibida.
+
+Chatbot (PHP): Componente principal que coordina la validación de la pregunta y la generación de la respuesta. Envía la pregunta al Validator y recibe la respuesta desde Response Generator.
+
+Validator (ValidadorPregunta.php): Componente que verifica si la pregunta del usuario es relevante para temas de seguridad laboral, basándose en palabras clave.
+
+Response Generator (RespuestaApiChatGPT.php): Componente que genera la respuesta adecuada para las preguntas validadas como relevantes por el Validator.
+
+Database (Opcional): Base de datos donde el chatbot puede almacenar un log de las interacciones para fines de auditoría o seguimiento (opcional).
+
+Este diagrama de componentes visualiza cómo se integran y comunican los diferentes módulos para cumplir el flujo de trabajo del chatbot.
+
+
+
+
+            +------------------+
+            |     Client       |
+            | (Web Browser)    |
+            +------------------+
+                    |
+                    | HTTP/S (AJAX Requests)
+                    |
+                    v
+            +------------------+
+            |   Web Server     |
+            | (Apache/Nginx +  |
+            |       PHP)       |
+            +------------------+
+
+
+Descripción del Diagrama de Despliegue Simplificado
+Client (Web Browser): El navegador del usuario que contiene la interfaz del chatbot y envía las preguntas del usuario al servidor a través de peticiones AJAX.
+
+Web Server (Apache + PHP): El servidor donde se ejecuta el código PHP del chatbot. Procesa las peticiones y devuelve respuestas al cliente sin necesidad de comunicación con una base de datos.
+
+Este despliegue básico asegura una interacción directa entre el cliente y el servidor web, ideal para sistemas que no requieren persistencia de datos.
+
+
+
+
+
+
+               +----------------+
+               |     Inicio     |
+               +----------------+
+                       |
+                       v
+          +-----------------------------+
+          | Usuario ingresa pregunta    |
+          +-----------------------------+
+                       |
+                       v
+     +------------------------------+
+     | Enviar pregunta al servidor  |
+     |          (AJAX)              |
+     +------------------------------+
+                       |
+                       v
+       +---------------------------+
+       | Validar relevancia de la  |
+       |         pregunta          |
+       +---------------------------+
+                       |
+           +-------------------+
+           | ¿Pregunta relevante? |
+           +-------------------+
+           /           \
+        Sí/             \No
+         /               \
+        v                 v
++------------------+  +------------------------+
+| Generar respuesta|  | Pedir reformulación de |
+|    adecuada      |  |       pregunta         |
++------------------+  +------------------------+
+                       |
+                       v
+          +--------------------------+
+          | Mostrar respuesta al     |
+          |         usuario          |
+          +--------------------------+
+                       |
+                       v
+               +----------------+
+               |       Fin      |
+               +----------------+
+
+
+Descripción del Diagrama de Actividad
+Inicio: Comienza el flujo cuando el usuario abre la interfaz del chatbot.
+Usuario ingresa pregunta: El usuario escribe una pregunta en el campo de entrada.
+Enviar pregunta al servidor (AJAX): La pregunta se envía al servidor mediante una solicitud AJAX. 
+Validar relevancia de la pregunta: El servidor valida si la pregunta es relevante para temas de seguridad laboral.
+¿Pregunta relevante?: Se verifica si la pregunta tiene relación con la seguridad laboral.
+Sí: Si la pregunta es relevante, pasa al paso de Generar respuesta adecuada.
+No: Si no es relevante, el chatbot solicita una reformulación de la pregunta.
+Mostrar respuesta al usuario: La respuesta (o el mensaje de reformulación) se muestra en la interfaz del usuario.
+Fin: Termina el flujo de actividad.

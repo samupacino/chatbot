@@ -5,7 +5,7 @@ class RespuestaApiChatGPT{
 
     $ch = curl_init();
     $url = 'https://api.openai.com/v1/chat/completions';
-   
+    $api_key = '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'; 
     $data = [];
     $data["model"] = "gpt-3.5-turbo";
     $data['messages'] = array([
