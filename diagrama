@@ -150,7 +150,7 @@ Este despliegue básico asegura una interacción directa entre el cliente y el s
 Descripción del Diagrama de Actividad
 Inicio: Comienza el flujo cuando el usuario abre la interfaz del chatbot.
 Usuario ingresa pregunta: El usuario escribe una pregunta en el campo de entrada.
-Enviar pregunta al servidor (AJAX): La pregunta se envía al servidor mediante una solicitud AJAX.
+Enviar pregunta al servidor (AJAX): La pregunta se envía al servidor mediante una solicitud AJAX. 
 Validar relevancia de la pregunta: El servidor valida si la pregunta es relevante para temas de seguridad laboral.
 ¿Pregunta relevante?: Se verifica si la pregunta tiene relación con la seguridad laboral.
 Sí: Si la pregunta es relevante, pasa al paso de Generar respuesta adecuada.

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -120,8 +121,8 @@
                     
                     // Agregar la respuesta del chatbot a la interfaz
                     /*console.log(evento.target.responseText);
-                    return;
-                    */
+                    return;*/
+                    
                     var resultado = JSON.parse(evento.target.responseText);
 
                     const botMessage = document.createElement("div");
@@ -145,7 +146,7 @@
                     console.log(evento.target.responseText);
                 }
             });
-            ajax_seguridad.open("POST","main.php");
+            ajax_seguridad.open("POST","index.php?chatgpt");
             ajax_seguridad.send(pregunta);
 
         });
