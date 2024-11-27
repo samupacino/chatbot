@@ -10,7 +10,7 @@ require_once('RespuestaApiChatGPT.php');
         $generador_respuesta = new RespuestaApiChatGPT();
 
         $preguntaUsuario = $_POST['userInput'];
-        $chat_response =  new Chatbot( $validador_pregunta,$generador_respuesta);
+        $chat_response =  new Chatbot($validador_pregunta,$generador_respuesta);
 
         $respuestaChatbot = $chat_response->responderChatbot($preguntaUsuario);
 

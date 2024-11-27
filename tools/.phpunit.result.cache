@@ -1,0 +1,1 @@
+{"version":1,"defects":{"PruebasTest::testGreetsWithName":7,"UnitarioTest::testGreetsWithName":7,"Unitario::testGreetsWithName":7,"PruebasTest::testPruebasTest":7},"times":{"PruebasTest::testGreetsWithName":0.001,"UnitarioTest::testGreetsWithName":0.001,"Unitario::testGreetsWithName":0.001,"PruebasTest::testPruebasTest":0.01}}

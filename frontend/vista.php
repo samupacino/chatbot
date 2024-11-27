@@ -6,14 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot de Seguridad en el Trabajo</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+         body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f4f4f9;
-            margin: 0;
+        }
+              .title-container {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        .title {
+            font-size: 2.1 rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            color: #34495e;
+            margin-top: 10px;
         }
         .chat-container {
             width: 100%;
@@ -64,9 +85,24 @@
             border-radius: 5px;
             cursor: pointer;
         }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
+<div class="title-container">
+        <h3 class="title">Chatbot Educativo con IA para Consultas Académicas en Seguridad y Salud Ocupacional para la Facultad de Ingeniería de la Universidad Continental</h3>
+        <p class="subtitle">Tu asistente virtual para consultas de seguridad en el trabajo</p>
+</div>
+
 <form action="" method="post" id="form_seguridad">
     <div class="chat-container">
         <div class="chat-box" id="chatBox">
